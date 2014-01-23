@@ -55,20 +55,6 @@ public final class EncodingUtils {
     return Base64.decode(base64);
   }
 
-  /**
-   * Encodes a byte array to a base64 byte array, no padding out.
-   * 
-   * @param base64
-   * @return A base64 encoded string of {@code base64}
-   * @throws NullPointerException
-   *           If {@code base64} is {@code null}.
-   */
-  public static byte[] encodeBase64(byte[] base64) {
-    if (base64 == null)
-      throw new NullPointerException("Parameter 'base64' cannot be null");
-    return Base64.encodeToByte(base64, false);
-  }
-
   private static String padBase64(String base64) {
     String padding = "";
     int remainder = base64.length() % 4;

@@ -52,7 +52,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Hex;
 
 import com.restfb.WebRequestor.Response;
 import com.restfb.batch.BatchRequest;
@@ -782,15 +785,15 @@ public class DefaultFacebookClient extends BaseFacebookClient implements Faceboo
    * 
    * @return A base64 encoded SHA256 Hash as a String
    */
-  private String makeAppSecretProof() {
+  protected String makeAppSecretProof() {
     try {
-      Mac mac = Mac.getInstance("HmacSHA256");
       byte[] key = appSecret.getBytes();
       SecretKeySpec signingKey = new SecretKeySpec(key, "HmacSHA256");
+      Mac mac = Mac.getInstance("HmacSHA256");
       mac.init(signingKey);
       byte[] raw = mac.doFinal(accessToken.getBytes());
-      String str = new String(encodeBase64(raw), "UTF-8").trim();
-      return str;
+      byte[] hex = new Hex().encode(raw);
+      return new String(hex, "UTF-8");
     } catch (NoSuchAlgorithmException e) {
       System.out.println(e);
     } catch (InvalidKeyException e) {

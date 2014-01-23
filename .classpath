@@ -5,5 +5,14 @@
 	<classpathentry kind="src" path="source/example"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/dpiet/.m2/repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="commons-codec"/>
+			<attribute name="maven.artifactId" value="commons-codec"/>
+			<attribute name="maven.version" value="1.4"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path=".eclipse-build"/>
 </classpath>
