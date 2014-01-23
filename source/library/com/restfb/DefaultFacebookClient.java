@@ -23,7 +23,6 @@
 package com.restfb;
 
 import static com.restfb.util.EncodingUtils.decodeBase64;
-import static com.restfb.util.EncodingUtils.encodeBase64;
 import static com.restfb.util.StringUtils.isBlank;
 import static com.restfb.util.StringUtils.join;
 import static com.restfb.util.StringUtils.toBytes;
@@ -52,7 +51,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.crypto.Mac;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Hex;
@@ -74,7 +72,6 @@ import com.restfb.exception.FacebookSignedRequestVerificationException;
 import com.restfb.json.JsonArray;
 import com.restfb.json.JsonException;
 import com.restfb.json.JsonObject;
-import com.restfb.util.EncodingUtils;
 import com.restfb.util.StringUtils;
 
 /**
