@@ -23,6 +23,7 @@
 package com.restfb;
 
 import static com.restfb.util.EncodingUtils.decodeBase64;
+import static com.restfb.util.EncodingUtils.encodeHex;
 import static com.restfb.util.StringUtils.isBlank;
 import static com.restfb.util.StringUtils.join;
 import static com.restfb.util.StringUtils.toBytes;
@@ -52,8 +53,6 @@ import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Hex;
 
 import com.restfb.WebRequestor.Response;
 import com.restfb.batch.BatchRequest;
@@ -789,7 +788,7 @@ public class DefaultFacebookClient extends BaseFacebookClient implements Faceboo
       Mac mac = Mac.getInstance("HmacSHA256");
       mac.init(signingKey);
       byte[] raw = mac.doFinal(accessToken.getBytes());
-      byte[] hex = new Hex().encode(raw);
+      byte[] hex = encodeHex(raw);
       return new String(hex, "UTF-8");
     } catch (NoSuchAlgorithmException e) {
       System.out.println(e);

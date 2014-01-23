@@ -55,6 +55,26 @@ public final class EncodingUtils {
     return Base64.decode(base64);
   }
 
+  /**
+   * Encodes a hex byte[] from given byte[]
+   * 
+   * This function is equivalent to apache commons codec binary new Hex().encode(byte[]);
+   * 
+   * @param data
+   * @return Hex encoded byte[]
+   * 
+   */
+  public static byte[] encodeHex(final byte[] data) {
+    final char[] toDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    final int l = data.length;
+    final char[] out = new char[l << 1];
+    for (int i = 0, j = 0; i < l; i++) {
+      out[j++] = toDigits[(0xF0 & data[i]) >>> 4];
+      out[j++] = toDigits[0x0F & data[i]];
+    }
+    return new String(out).getBytes();
+  }
+
   private static String padBase64(String base64) {
     String padding = "";
     int remainder = base64.length() % 4;
